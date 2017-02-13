@@ -1,0 +1,77 @@
+<?php
+session_destroy();
+?>
+
+<div ng-controller="loginController">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+	<ul class="nav navbar-nav navbar-right">
+		<li><a><span class="glyphicon glyphicon-user"></span>   Admin login</a></li>
+	</ul>
+	</div>
+	</nav>
+	<div class="container">
+		<h1 class="text-primary" style="text-align: center"><large>Welcome to the Network</large><h1>
+	</div>
+	<div class="container" style="padding-top: 40px">
+	<p class="text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+</div>
+<div class="container-fluid" style="padding-top: 30px">
+	<div class="col-sm-4 col-sm-offset-1">
+		<h2 class="text-primary">Signup</h2>
+		<form class="form-horizontal">
+			
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="username">Username:</label>
+				<div class="col-sm-8 col-sm-offset-1">
+					<input type="text" class="form-control" ng-model="signUpInfo.username" placeholder="Choose a username">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="password">Password:</label>
+				<div class="col-sm-8 col-sm-offset-1">
+					<input type="password" class="form-control" ng-model="signUpInfo.password" placeholder="Choose password">
+				</div>
+			</div>
+
+			<div class="form-group"> 
+				<div class="col-sm-offset-2 col-sm-9">
+					<input class="btn btn-primary" ng-click="signUserUp()" id="button" value="Sign-Up">
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+
+	<div class="col-sm-4 col-sm-offset-2">
+		<h2 class="text-primary">Login</h2>
+		<form class="form-horizontal">
+
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="username">Username:</label>
+				<div class="col-sm-8 col-sm-offset-1">
+					<input type="text" class="form-control" ng-model="loginInfo.username" placeholder="Enter your username">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-3" for="password">Password:</label>
+				<div class="col-sm-8 col-sm-offset-1">
+					<input type="password" class="form-control" ng-model="loginInfo.password" placeholder="Enter your password">
+				</div>
+			</div>
+
+			<div class="form-group"> 
+				<div class="col-sm-offset-2 col-sm-9">
+					<input class="btn btn-primary" ng-click="loginUser()" id="button" value="Login">
+				</div>
+			</div>
+
+		</form>
+	</div>
+
+</div>
+</div>
+

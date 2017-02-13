@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainApp">
+<head>
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  -->
+
+ 
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery-1.12.4.min.js"></script> 
+
+
+<!-- local cdn links
+ <link rel="stylesheet" href="cdn/bootstrap.min.css" >
+<script src="cdn/jquery-1.12.4.min.js"></script> 
+<script src="cdn/bootstrap.min.js"></script>
+ -->
+
+<meta charset = "UTF-8">
+<style>
+
+	/*.thumb{padding: 60px 10px; text-align: center; background: #ddd;}
+	.thumb:nth-child(even){background: #eee;}*/
+	/*h1,h2{margin: 30px 0;}*/
+	.container-fluid, .container{}
+	h2{text-align: center;}
+	.footer-bottom {
+    background-color: #000000 ;
+    min-height: 20px;
+    width: 100%;
+	}
+.footercontent {
+    color: #fff;
+    line-height: 30px;
+    min-height: 30px;
+    padding: 7px 0;
+}
+
+
+	</style>
+
+
+<title>AngularJS LOGIN</title>
+</head>
+
+
+<body>
+
+
+	<div class="container" style="padding-top: 60px ; padding-bottom: 100px">
+		<div class="row">
+			<div class="col-xs-12">
+				
+				
+				<div ui-view>
+</div>
+			</div>
+		</div>
+	</div>
+
+
+<!-- 
+footer type -->
+<div class="footer-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="footercontent">
+					© 2017, JerryJerald , All rights reserved
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="footercontent" style="text-align: right" >
+					 Angular JS
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 
+footer end -->
+
+</body>
+<script src="js/bootstrap.min.js"></script>
+<link rel="javascript" src="js/jquery.min.js">
+<script src="angular.min.js"></script>
+<script src="angular-ui-router.min.js"></script>
+<!-- <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js" type="text/javascript"></script> -->
+<script src="js/ui-bootstrap-tpls-0.10.0.js" type="text/javascript"></script>
+<script src="app.js"></script>
+<script src="loginController.js"></script>
+<script src="mainController.js"></script>
+<script src="admin/adminController.js"></script>
+
+</html>

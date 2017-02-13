@@ -1,0 +1,231 @@
+<!-- <div ng-controller="adminController">  -->
+
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <ul class="nav navbar-nav">
+
+        <li><a href="#">Admin Panel</a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a ng-show="flagapprove" role="button"  ng-click="showapprove()" id="approvelabell">Approve users <span class = "badge">{{countapprove}}</span></a></li>
+        <!-- <li><button ng-show="flagapprove" ng-click="showapprove()" id="approvelabel">Approve users <span class = "badge">{{countapprove}}</span></button></li> -->
+        <li><a href="#" ng-click="logOut()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <br>
+  <!-- <div ng-controller="adminController"> -->
+  <div ng-show="flagapprove">
+    <div id="approvediv" class="hidden row">
+      <div class="container" style="padding-top: 20px">
+        <h4>Sign-up Approval list </h4><br>
+
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Aid</th>
+              <th>Username</th>
+              <!-- <th>Password</th> -->
+              <!-- <th>Status</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr  ng-repeat="aprove in approvedData">
+              <td>{{aprove.aid}}</td>
+              <td>{{aprove.username}}</td>
+              <!-- <td>{{aprove.password}}</td> -->
+             <!--  <td>{{aprove.status}}</td> -->
+              <td style="width: 1%"><button class="btn btn-success" ng-click="aproveUser(aprove.aid,aprove.username,aprove.password)"><i class="w3-margin-left glyphicon glyphicon-ok"></i></button></td>
+              <td style="width: 5%"><button class="btn btn-danger"ng-click="removeUser(aprove.aid)"><i class="w3-margin-left glyphicon glyphicon-trash"></i></button></td>
+
+            </tr>
+          </tbody>
+        </table>
+
+      </div> <!-- end of container -->
+    </div>   <!-- end of row -->
+  </div>
+
+    <br>
+    <div class="row">
+      <div class="container">
+        <!-- <h4>Users list</h4> <br> -->
+
+        <div class="row">
+          <div class="col-xs-3">
+          <h4>Users list</h4>
+          </div>
+          <!-- <div class="col-xs-4 col-xs-offset-1">
+             <input placeholder ="No of results per page" type="text" ng-model="search.resultsperpage" class="form-control">
+          </div> -->
+          <div class="col-xs-4 col-xs-offset-1">
+             <input placeholder ="Search Here - " type="text" ng-model="search.username" class="form-control">
+          </div>
+        
+          <div class="col-xs-3 col-xs-offset-1">
+              <select  class="form-control" ng-model="sort" >
+              
+
+              <option value="" selected disabled>Sort By : </option>
+              <option value="id">User Id</option>
+              <option value="username">Username</option>
+              <option value="name">Name</option>
+            </select>
+          </div>
+                     
+        </div>
+
+        
+        <br>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Username</th>
+              <!-- <th>Password</th> -->
+              <th>Name</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr ng-repeat="mainuser in userData"> -->
+            <tr ng-repeat="mainuser in filtered = userData | filter:search | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit | orderBy: sort">
+              <td>{{mainuser.id}}</td>
+              <td>{{mainuser.username}}</td>
+              <!-- <td>{{mainuser.password}}</td> -->
+              <td>{{mainuser.name}}</td>
+              <td style="width: 5%"><button class="btn btn-warning" ng-click="editUser(mainuser.id,mainuser.username,mainuser.password,mainuser.name,mainuser.gender,mainuser.address,mainuser.phone,mainuser.email,mainuser.bloodgroup,mainuser.job)" data-toggle="modal" data-target="#mymodalmadness">
+                <i class="w3-margin-left glyphicon glyphicon-pencil"></i>
+
+              </button></td>
+              <td style="width: 5%"><button class="btn btn-danger" ng-click="removeUserMain(mainuser.id)"><i class="w3-margin-left glyphicon glyphicon-trash"></i></button></td>
+
+            </tr>
+          </tbody>
+        </table>
+<div class="col-xs-4 col-xs-offset-4">
+<pagination class="pagination-sm" page="currentPage" max-size="noOfPages" total-items="totalItems" items-per-page="entryLimit"></pagination>
+</div>
+        <!-- Modal popup -->
+
+        <div class="modal fade" id="mymodalmadness">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal">x</button>
+                <h2 class="modal-title" >Edit User</h2>
+              </div>  
+              <div class="modal-body">
+
+
+
+                <form  class="form-horizontal">
+                  <div class="hidden form-group">
+                    <label class="control-label col-sm-2" for="id">Id:</label>
+                    <div class="col-sm-10">
+                      <input type="text" ng-model="editInfo.unid" class="form-control" id="unid" >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="username">Username:</label>
+                    <div class="col-sm-10">
+                      <input type="text"  ng-model="editInfo.unusername" class="form-control" id="unusername" name="unusername">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="password">Password:</label>
+                    <div class="col-sm-10">
+                      <input type="text"  ng-model="editInfo.unpassword" class="form-control" id="unpassword" name="unpassword">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="name">Name:</label>
+                    <div class="col-sm-10">
+                      <input type="text"  ng-model="editInfo.unname" class="form-control" id="unname" name="unname">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="gender">Gender:</label>
+                    <div class="col-sm-10"> 
+                      <input type="text" ng-model="editInfo.ungender" class="form-control" id="ungender" name="ungender">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="address">Address:</label>
+                    <div class="col-sm-10"> 
+                      <input type="text" ng-model="editInfo.unaddress" class="form-control" id="unaddress" name="unaddress">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="phone">Phone:</label>
+                    <div class="col-sm-10"> 
+                      <input type="text" ng-model="editInfo.unphone" class="form-control" id="unphone" name="unphone">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="email">Email:</label>
+                    <div class="col-sm-10"> 
+                      <input type="text" ng-model="editInfo.unemail" class="form-control" id="unemail" name="unemail">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="bloodgroup">Bloodgroup:</label>
+                    <div class="col-sm-10"> 
+                      <input type="text" ng-model="editInfo.unbloodgroup" class="form-control" id="unbloodgroup" name="unbloodgroup">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="occupation">Occupation:</label>
+                    <div class="col-sm-10"> 
+                      <input type="text" ng-model="editInfo.unjob" class="form-control" id="unjob" name="unjob" >
+                    </div>
+                  </div>
+
+
+
+                  <div class="form-group"> 
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button ng-click="updateUser()" data-dismiss="modal" class="btn btn-primary">Edit</button>
+                    </div>
+                  </div>
+                </form>
+
+
+              </div>
+            </div> <!-- end of modal content -->
+          </div> <!-- end of modal dialog -->
+        </div> <!-- end modal -->
+
+
+<!-- testing of a dynamic ng repeat page  -->
+
+      
+
+<!-- test ends -->
+
+
+
+      </div>  <!-- end of container -->
+    </div> <!-- end of row -->
+  </div>  <!-- end of controller -->
+
+<!-- </div> -->
+
+
+
+
+
+
